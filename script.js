@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
             totalQuantity += parseInt(quantity.value);
         });
     
-        var finalQuantity = document.querySelector('.item-count');
-        finalQuantity.textContent = totalQuantity;
+        document.querySelector('.item-count').textContent = totalQuantity;
+        localStorage.setItem('totalQuantity', totalQuantity);
     }
     
     var checkoutButton = document.querySelector('.checkout-button');
@@ -65,11 +65,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         updateItemCount();
     });
-    window.addEventListener('pageshow', function(event) {
-        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-            // Page is loaded from cache or back/forward button is used
-            // Refresh the page to ensure JavaScript is re-run
-            window.location.reload();
-        }
-    });
+    
 });
